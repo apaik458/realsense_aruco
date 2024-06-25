@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<launch>
+    <arg name="script" default="point"/>
+
+    <include file="$(find realsense2_camera)/launch/rs_camera.launch">
+    </include>
+
+    <node name="realsense_aruco" pkg="realsense_aruco" type="arucoPoint.py" if="$(eval script=='point')" output="screen">
+    </node>
+
+    <node name="realsense_aruco" pkg="realsense_aruco" type="arucoPose.py" if="$(eval script=='pose')" output="screen">
+    </node>
+
+    <!-- <node type="rviz" name="rviz" pkg="rviz" args="-d $(find realsense_aruco)/rviz/realsense.rviz"/> -->
+</launch>
