@@ -1,6 +1,11 @@
 # realsense_aruco
 Package for running OpenCV ArUCo tag detection on Intel RealSense camera
 
+<p align="middle">
+  <img src="aruco_point.gif" width="45%">
+  <img src="aruco_pose.gif" width="45%">
+</p>
+
 ## Install
 Clone repo
 ```bash
