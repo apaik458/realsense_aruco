@@ -10,8 +10,10 @@ class Aruco:
     def __init__(self):
         self.bridge = CvBridge()
         
-        self.arucoDict = cv.aruco.Dictionary_get(cv.aruco.DICT_6X6_50)
-        self.arucoParams = cv.aruco.DetectorParameters_create()
+        # Note: previous cv2 versions use cv.aruco.Dictionary_get()
+        # and cv.aruco.DetectorParameters_create()
+        self.arucoDict = cv.aruco.getPredefinedDictionary(cv.aruco.DICT_6X6_50)
+        self.arucoParams = cv.aruco.DetectorParameters()
 
         self.image_sub = rospy.Subscriber("/camera/color/image_raw", Image, self.callback)
         self.point_pub = rospy.Publisher("/point_topic", Point, queue_size=10)

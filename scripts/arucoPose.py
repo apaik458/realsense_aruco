@@ -16,8 +16,10 @@ class Aruco:
 
         rospack = rospkg.RosPack()
         
-        self.arucoDict = cv.aruco.Dictionary_get(cv.aruco.DICT_6X6_50)
-        self.arucoParams = cv.aruco.DetectorParameters_create()
+        # Note: previous cv2 versions use cv.aruco.Dictionary_get()
+        # and cv.aruco.DetectorParameters_create()
+        self.arucoDict = cv.aruco.getPredefinedDictionary(cv.aruco.DICT_6X6_50)
+        self.arucoParams = cv.aruco.DetectorParameters()
 
         # Side length of the ArUco marker in meters 
         self.aruco_marker_side_length = 0.0365
